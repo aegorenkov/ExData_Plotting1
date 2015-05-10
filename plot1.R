@@ -11,6 +11,7 @@ data <- read.table("exdata-data-household_power_consumption/household_power_cons
 ## functions.
 
 ## We will only be using data from the dates 2007-02-01 and 2007-02-02.
+
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 upper_date <- as.Date("2007-02-02", format = "%Y-%m-%d")
 lower_date <- as.Date("2007-02-01", format = "%Y-%m-%d")
@@ -22,10 +23,11 @@ data <- data[data$Date >= lower_date & data$Date <= upper_date,]
 ## Title "Global Active Power"
 ## y-axis label: "Frequency", range: 0-1200
 ## x-axis label: "Global Active Power (kilowatts)", range: 0-6
-
+png(filename = "plot1.png", width = 480, height = 480)
+par(mfrow = c(1, 1), bg = "transparent")
 hist(x = data$Global_active_power, main = "Global Active Power", col = "red",
      xlab = "Global Active Power (kilowatts)")
-
+dev.off()
 ## Construct the plot and save it to a PNG file with a width of 480
 ## pixels and a height of 480 pixels.
 
