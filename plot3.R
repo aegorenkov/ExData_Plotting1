@@ -10,13 +10,27 @@ data <- read.table("exdata-data-household_power_consumption/household_power_cons
 ## Date/Time classes in R using the `strptime()` and `as.Date()`
 ## functions.
 
+library(lubridate)
 ## We will only be using data from the dates 2007-02-01 and 2007-02-02.
+data$Date_time = dmy_hms(paste(data$Date, data$Time))
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 upper_date <- as.Date("2007-02-02", format = "%Y-%m-%d")
 lower_date <- as.Date("2007-02-01", format = "%Y-%m-%d")
 data <- data[data$Date >= lower_date & data$Date <= upper_date,]
 
 # Making the plot
+plot(data$Date_time, data$Sub_metering_1, 
+     xlab = "",
+     ylab = "Energy sub metering",
+     type = 'n')
+lines(data$Date_time, data$Sub_metering_1, col = "black")
+lines(data$Date_time, data$Sub_metering_2, col = "red")
+lines(data$Date_time, data$Sub_metering_3, col = "blue")
+legend("topright",
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+       lty = c(1, 1, 1), 
+       col = c("black", "red", "blue")
+       )
 
 ## Construct the plot and save it to a PNG file with a width of 480
 ## pixels and a height of 480 pixels.

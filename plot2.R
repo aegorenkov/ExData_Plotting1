@@ -14,7 +14,6 @@ library(lubridate)
 ## We will only be using data from the dates 2007-02-01 and 2007-02-02.
 data$Date_time = dmy_hms(paste(data$Date, data$Time))
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
-#data$Time <- as.Date(data$Time, format = "%H:%M:%S")
 upper_date <- as.Date("2007-02-02", format = "%Y-%m-%d")
 lower_date <- as.Date("2007-02-01", format = "%Y-%m-%d")
 data <- data[data$Date >= lower_date & data$Date <= upper_date,]
