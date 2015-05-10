@@ -17,15 +17,17 @@ lower_date <- as.Date("2007-02-01", format = "%Y-%m-%d")
 data <- data[data$Date >= lower_date & data$Date <= upper_date,]
 
 # Making the plot
-
-## Construct the plot and save it to a PNG file with a width of 480
-## pixels and a height of 480 pixels.
-
 ### Plot description
 ## Histogram
 ## Title "Global Active Power"
 ## y-axis label: "Frequency", range: 0-1200
 ## x-axis label: "Global Active Power (kilowatts)", range: 0-6
+
+hist(x = data$Global_active_power, main = "Global Active Power", col = "red",
+     xlab = "Global Active Power (kilowatts)")
+
+## Construct the plot and save it to a PNG file with a width of 480
+## pixels and a height of 480 pixels.
 
 ## Name each of the plot files as `plot1.png`, `plot2.png`, etc.
 
